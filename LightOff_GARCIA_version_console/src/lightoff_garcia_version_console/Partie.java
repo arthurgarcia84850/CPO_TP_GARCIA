@@ -10,19 +10,10 @@ package lightoff_garcia_version_console;
  */
 import java.util.Scanner;
 
-/**
- * La classe Partie gère le jeu LightOff.
- */
 public class Partie {
     private GrilleDeJeu grille;
     private int nbCoups;
 
-    /**
-     * Initialise une nouvelle partie du jeu.
-     *
-     * @param nbLignes    Le nombre de lignes de la grille.
-     * @param nbColonnes  Le nombre de colonnes de la grille.
-     */
     public Partie(int nbLignes, int nbColonnes) {
         grille = new GrilleDeJeu(nbLignes, nbColonnes);
         nbCoups = 1;
@@ -46,7 +37,7 @@ public class Partie {
             System.out.println("Coup #" + nbCoups);
             System.out.println(grille.toString());
 
-            System.out.print("Choisissez une ligne, colonne ou diagonale (L, C ou D) : ");
+            System.out.print("Choisissez une ligne, colonne ou diagonale (L,C ou D) : ");
             String choixType = scanner.nextLine();
 
             if (choixType.equalsIgnoreCase("L")) {
@@ -54,7 +45,7 @@ public class Partie {
                 String saisie = scanner.nextLine();
                 if (saisie.matches("\\d+")) {
                     int choix = Integer.parseInt(saisie) - 1; // Soustrayez 1 pour correspondre aux indices (ligne 1 devient index 0)
-                    if (choix >= 0 && choix < grille.getNbLignes()) {
+                    if (choix >= 0 && choix < grille.nbLignes) {
                         grille.activerLigneDeCellules(choix);
                     }
                 }
@@ -63,7 +54,7 @@ public class Partie {
                 String saisie = scanner.nextLine();
                 if (saisie.matches("\\d+")) {
                     int choix = Integer.parseInt(saisie) - 1; // Soustrayez 1 pour correspondre aux indices (colonne 1 devient index 0)
-                    if (choix >= 0 && choix < grille.getNbColonnes()) {
+                    if (choix >= 0 && choix < grille.nbColonnes) {
                         grille.activerColonneDeCellules(choix);
                     }
                 }
@@ -72,7 +63,7 @@ public class Partie {
                 String saisie = scanner.nextLine();
                 if (saisie.equalsIgnoreCase("D")) {
                     grille.activerDiagonaleDescendante();
-                } else if (sasie.equalsIgnoreCase("M")) {
+                } else if (saisie.equalsIgnoreCase("M")) {
                     grille.activerDiagonaleMontante();
                 }
             }

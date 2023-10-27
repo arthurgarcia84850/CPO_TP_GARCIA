@@ -16,7 +16,7 @@ public class LightOff_GARCIA_version_console {
     public static void main(String[] args) {
 
         // Créez une partie avec une grille nxn
-        Partie partie = new Partie(2, 2);
+        Partie partie = new Partie(3, 3);
         partie.lancerPartie();
     }
 }

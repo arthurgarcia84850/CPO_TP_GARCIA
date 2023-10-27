@@ -11,20 +11,11 @@ package lightoff_garcia_version_console;
 
 import java.util.Random;
 
-/**
- * La classe GrilleDeJeu représente la grille de cellules lumineuses.
- */
 public class GrilleDeJeu {
     private CelluleLumineuse[][] matriceCellules;
     int nbLignes;
     int nbColonnes;
 
-    /**
-     * Initialise une nouvelle grille de jeu avec le nombre de lignes et de colonnes spécifié.
-     *
-     * @param nbLignes    Le nombre de lignes de la grille.
-     * @param nbColonnes  Le nombre de colonnes de la grille.
-     */
     public GrilleDeJeu(int nbLignes, int nbColonnes) {
         this.nbLignes = nbLignes;
         this.nbColonnes = nbColonnes;
@@ -38,7 +29,76 @@ public class GrilleDeJeu {
         }
     }
 
-    // ... (autres méthodes)
+    /**
+     * Active toutes les cellules d'une ligne spécifique.
+     *
+     * @param idLigne Le numéro de la ligne à activer.
+     */
+    public void activerLigneDeCellules(int idLigne) {
+        for (int j = 0; j < nbColonnes; j++) {
+            matriceCellules[idLigne][j].activerCellule();
+        }
+    }
+
+    /**
+     * Active toutes les cellules d'une colonne spécifique.
+     *
+     * @param idColonne Le numéro de la colonne à activer.
+     */
+    public void activerColonneDeCellules(int idColonne) {
+        for (int i = 0; i < nbLignes; i++) {
+            matriceCellules[i][idColonne].activerCellule();
+        }
+    }
+
+    /**
+     * Active la diagonale descendante de la grille en allumant les cellules correspondantes.
+     */
+    public void activerDiagonaleDescendante() {
+        for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
+            matriceCellules[i][i].activerCellule();
+        }
+    }
+
+    /**
+     * Active la diagonale montante de la grille en allumant les cellules correspondantes.
+     */
+    public void activerDiagonaleMontante() {
+        for (int i = 0; i < Math.min(nbLignes, nbColonnes); i++) {
+            matriceCellules[i][nbColonnes - i - 1].activerCellule();
+        }
+    }
+
+    /**
+     * Active de manière aléatoire une ligne, une colonne ou une diagonale de cellules de la grille.
+     */
+    public void activerLigneColonneOuDiagonaleAleatoire() {
+        Random rand = new Random();
+        int choix = rand.nextInt(4);
+
+        if (choix == 0) {
+            int ligneAleatoire = rand.nextInt(nbLignes);
+            activerLigneDeCellules(ligneAleatoire);
+        } else if (choix == 1) {
+            int colonneAleatoire = rand.nextInt(nbColonnes);
+            activerColonneDeCellules(colonneAleatoire);
+        } else if (choix == 2) {
+            activerDiagonaleDescendante();
+        } else {
+            activerDiagonaleMontante();
+        }
+    }
+
+    /**
+     * Mélange la grille de cellules lumineuses de manière aléatoire à partir d'un nombre spécifié de tours.
+     *
+     * @param nbTours Le nombre de tours pour mélanger la grille.
+     */
+    public void melangerMatriceAleatoirement(int nbTours) {
+        for (int tour = 0; tour < nbTours; tour++) {
+            activerLigneColonneOuDiagonaleAleatoire();
+        }
+    }
 
     /**
      * Vérifie si toutes les cellules de la grille sont éteintes.
@@ -56,11 +116,6 @@ public class GrilleDeJeu {
         return true;
     }
 
-    /**
-     * Représente la grille sous forme d'une chaîne de caractères.
-     *
-     * @return Une représentation textuelle de la grille.
-     */
     @Override
     public String toString() {
         StringBuilder grilleString = new StringBuilder();
