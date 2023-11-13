@@ -117,7 +117,7 @@
               <Color blue="33" green="0" red="ff" type="rgb"/>
             </Property>
             <Property name="rows" type="int" value="5"/>
-            <Property name="text" type="java.lang.String" value="Un jeu de divertissement familiale  qui peut vous faire &#xa;R&#xca;VER ou vous faire vivre un CAUCHEMAR uuuhhhhh !"/>
+            <Property name="text" type="java.lang.String" value="Un jeu de divertissement familiale qui peut vous faire &#xa;R&#xca;VER ou vous faire vivre un CAUCHEMAR uuuhhhhh !"/>
           </Properties>
         </Component>
       </SubComponents>

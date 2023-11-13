@@ -50,7 +50,7 @@ btnContinuer.addActionListener((ActionEvent e) -> {
         jTextArea1.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         jTextArea1.setForeground(new java.awt.Color(255, 0, 51));
         jTextArea1.setRows(5);
-        jTextArea1.setText("Un jeu de divertissement familiale  qui peut vous faire \nRÊVER ou vous faire vivre un CAUCHEMAR uuuhhhhh !");
+        jTextArea1.setText("Un jeu de divertissement familiale qui peut vous faire \nRÊVER ou vous faire vivre un CAUCHEMAR uuuhhhhh !");
         jScrollPane2.setViewportView(jTextArea1);
 
         jTextArea2.setBackground(new java.awt.Color(0, 0, 0));
